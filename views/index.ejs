@@ -1,0 +1,24 @@
+<div class="author">
+    <h1 class="author_heading">Hi, I am Pavan</h1>
+    <p class="author_body">Wev Developer</p>
+</div>
+
+<img  class="hero-image" src="/img/hero-image.webp" alt="person looking outside window" width="981" height="528">
+
+<section class="article">
+    <h2 class="article_heading">Latest Posts</h2>
+    <ul class="article_ul">
+        <% data.forEach(post => { %>
+            <li>
+                <a href="/post/<%=post._id%>">
+                    <span><%= post.title%></span>
+                    <span class="article_list_date"><%= post.createdAt.toDateString()%></span>
+                </a>
+            </li>
+        <% }) %>
+    </ul>
+
+    <% if(nextPage !== null){  %>    
+        <a href="/?page=<%= nextPage %>" class="pagination">&lt; view older posts</a>
+    <% } %>
+</section>

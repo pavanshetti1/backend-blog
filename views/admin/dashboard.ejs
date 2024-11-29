@@ -1,0 +1,24 @@
+
+<div class="admin-title">
+    <h3>Posts</h3>
+    <a href="/add-post" class="button">+ Add new</a>
+</div>
+
+<ul class="admin-posts">
+    <% data.forEach(post => { %>
+        <li>
+            <a href="/post/<%=post._id%>"><%=post.title%> &nearr;</a>
+            <div class="admin-post-controls">
+                <a href="/edit-post/<%= post._id %>" class="btn">Edit</a>
+                <form action="/delete-post/<%=post._id%>?_method=DELETE" method="post">
+                    <input type="submit" value="Delete" class="btn btn-delete">
+               </form>
+            </div>
+        </li>
+        
+    <% }); %>
+</ul>
+
+<% if(nextPage !== null){  %>    
+    <a href="/dashboard/?page=<%= nextPage %>" class="pagination">&lt; view older posts</a>
+<% } %>
